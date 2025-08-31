@@ -1,0 +1,16 @@
+# Ignore VS Code settings
+.vscode/
+
+# Ignore build/compiled files
+*.exe
+*.out
+*.obj
+*.class
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore temporary/backup files
+*.log
+*.tmp
