@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "format": "cpp",
+    "limits": "cpp",
+    "optional": "cpp",
+    "variant": "cpp"
+  }
+}
