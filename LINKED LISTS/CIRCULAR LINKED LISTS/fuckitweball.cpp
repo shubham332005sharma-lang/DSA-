@@ -1,5 +1,6 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
+
 
 // node class
 class node
@@ -47,21 +48,18 @@ public:
     void display();
     void reverse();
 };
-
-//-- MAIN FUNCTION DEFINTION
 int main()
-{
+{   
     list l1;
-    l1.insert_at_start(3);
-    l1.delete_from_end();
     l1.display();
-    l1.insert_at_start(2);
+    l1.insert_at_end(5);
     l1.display();
-    l1.insert_at_start(1);
     l1.insert_at_end(4);
-    l1.delete_from_end();
     l1.display();
-    cout << "Total nodes: " << node::get_node_count() << endl;
+    l1.insert_at_end(3);
+    l1.insert_at_end(2);
+    l1.insert_at_end(1);
+    l1.display();
     return 0;
 }
 
@@ -87,66 +85,51 @@ void list::insert_at_start(int val)
     head = newnode;
 }
 
-void list::insert_at_end(int val)
+void list:: insert_at_end(int val)
 {
-    node *newnode = new node(val);
+    node* newnode = new node(val);
 
-    if (head == nullptr)
-    {
+    if(head==nullptr){
         head = newnode;
-        head->next = head;
-        return;
+        newnode->next=head;
+    }else{
+        node* temp =head;
+        while(temp->next!=head){
+            temp=temp->next;
+        }
+        temp->next=newnode;
+        newnode->next=head;
     }
 
-    node *temp = head;
-    while (temp->next != head)
-    {
-        temp = temp->next;
-    }
-
-    temp->next = newnode;
-    newnode->next = head;
 }
 
-void list::delete_from_end()
-{
-    // first case
-    if (head == nullptr)
-    {
-        cout << "Empty list nothing to delete " << endl;
+void list:: insert_at_positiom(int position , int val){
+    if(position<1){
+        cout<<"Please enter a valid position argument !!!"<<endl;
         return;
     }
-    else if (head->next == head)
-    {
-        delete head;
-        return;
+    node* temp=head;
+    int step_count =0;
+    while(step_count != position-1 || temp!=head){
+
     }
 
-    node *temp = head;
-    node *temp2 = head;
-    while (temp->next->next != head)
-    {
-        temp = temp->next;
-    }
-    temp2 = temp->next;
-    temp->next = head;
-    delete temp2;
 }
 
-void list::display()
-{
-    if (head == nullptr)
-    {
-        cout << "Empty list." << endl;
+void list :: display(){
+    if(head==nullptr){
+        cout<<"Empty list : nothing to display ."<<endl;
+        return;
+    }else if(head->next == head){
+        cout<<head->data<<"<->"<<head->data<<endl;
         return;
     }
-
-    node *temp = head;
-    do
-    {
-        cout << temp->data << " -> ";
-        temp = temp->next;
-    } while (temp != head);
-
-    cout << head->data << endl; // close the circle
+    node* temp = head->next;
+    cout<<head->data<<"<->";
+    while(temp != head){
+        cout<<temp->data<<"<->";
+        temp=temp->next;
+    }
+    cout<<head->data<<endl;
+    return;
 }

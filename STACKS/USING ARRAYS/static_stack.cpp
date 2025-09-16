@@ -45,8 +45,14 @@ class Stack{
         cout<< "SIZE : "<<topIndex+1 << endl;
         return topIndex+1;
     }
+
 };
 int main()
-{
+{   
+    do
+    {
+    
+    } while ();
+    
     return 0;
 }
